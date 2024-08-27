@@ -66,7 +66,7 @@ $string = "good bye";
 echo "Chuỗi sau khi chuyển đổi thành chữ hoa: " . strtoupper($string);
 echo "<br>";
 
-// 9 
+// 9 chuyển đổi một chuỗi thành chuỗi in hoa chữ cái đầu tiên của mỗi từ sử dụng hàm ucwords().
 echo "Chuỗi sau khi chuyển đổi: " . ucwords($string);
 echo "<br>";
 
