@@ -6,177 +6,217 @@
     <title>Document</title>
 </head>
 <body>
-
-<h1>Hello</h1>
-
 <?php
 
-$chuoi = "xin chao Viet Nam";
-echo $chuoi . "<br />";
 
-// 1 
-echo "Số ký tự trong chuỗi là: " . strlen($chuoi);
-echo "<br>";
+//  bài tập trang 6
+// thêm dữ liệu vào bảng
 
-// 2
-$so_tu = str_word_count($chuoi);
-echo "Số từ trong chuỗi là: " . $so_tu;
-echo "<br>";
+$dbh = mysqli_connect('localhost:3307', 'root','', 'melody')
+    // Kết nối với MySQL Server
 
-// 3 
-$chuoi_dao_nguoc = strrev($chuoi);
-echo "Chuỗi đảo ngược là: " . $chuoi_dao_nguoc;
-echo "<br>";
-
-// 4 Tìm kiếm một chuỗi con trong một chuỗi sử dụng hàm strpos().
-$chuoichinh = "Chào mừng bạn đến với Hàn Quốc !";
-$chuoicon = "Hàn Quốc";
-$vitri = strpos($chuoichinh, $chuoicon);
-echo "Chuỗi con được tìm thấy tại vị trí: " . $vitri;
-echo "<br>";
-
-// 5 Thay thế một chuỗi con trong một chuỗi bằng một chuỗi khác sử dụng hàm str_replace().
-$chuoi_chinh = "Chào mừng bạn đến với Trung Quốc !";
-$chuoi_con_can_thay_the = "Trung Quốc";
-$chuoi_thay_the = "Việt Nam";
-$chuoi_moi = str_replace($chuoi_con_can_thay_the, $chuoi_thay_the, $chuoi_chinh);
-echo "Chuỗi sau khi thay thế là: " . $chuoi_moi;
-echo "<br>";
-
-//6 kiểm tra xem một chuỗi có bắt đầu bằng một chuỗi con khác không sử dụng hàm strncmp().
-$strr = "Hello";
-$strrr = "Hello John!";
-
-# Lấy độ dài của chuỗi con
-$length = strlen($strr);
-
-# Lấy phần đầu của chuỗi lớn có cùng độ dài với chuỗi con
-$startOfStrrr = substr($strrr, 0, $length);
-
-# So sánh phần đầu của chuỗi lớn với chuỗi con
-if ($startOfStrrr === $strr) {
-    echo "Chuỗi '$strrr' bắt đầu bằng '$strr'.<br>";
-} else {
-    echo "Chuỗi '$strrr' không bắt đầu bằng '$strr'.<br>";
-}
-
-
-$string = "good bye";
-// 7 
-echo "Chuỗi sau khi chuyển đổi thành chữ hoa: " . strtoupper($string);
-echo "<br>";
-
-// 9 chuyển đổi một chuỗi thành chuỗi in hoa chữ cái đầu tiên của mỗi từ sử dụng hàm ucwords().
-echo "Chuỗi sau khi chuyển đổi: " . ucwords($string);
-echo "<br>";
-
-// 8 chuyển đổi một chuỗi thành chữ thường sử dụng hàm strtolower().
-$stringg = "GOOD BYE";
-$lowercaseString = strtolower($stringg);
-echo "Chuỗi sau khi chuyển đổi thành chữ thường: " . $lowercaseString;
-echo "<br>";
-
-// 10 loại bỏ khoảng trắng ở đầu và cuối chuỗi sử dụng hàm trim().
-$String = "   Wellcome to Viet Nam   ";
-echo "Chuỗi sau khi loại bỏ khoảng trắng: " . trim($String) . "<br>";
-
-// 11 loại bỏ ký tự đầu tiên của một chuỗi sử dụng hàm ltrim().
-$str1 = "123peanut";
-echo "Chuỗi sau khi loại bỏ ký tự đầu tiên: " . ltrim($str1, "123") . "<br>";
-
-// 12 loại bỏ ký tự cuối cùng của một chuỗi sử dụng hàm rtrim().
-$str2 = "peanut--------";
-echo "Chuỗi sau khi loại bỏ ký tự cuối cùng: " . rtrim($str2, "-") . "<br>";
-
-// 13 Viết một chương trình PHP để tách một chuỗi thành một mảng các phần tử sử dụng hàm explode().
-$chuoi1 = "Chào,mừng,bạn,đến,với,VietNam";
-$phan_tu = explode(",", $chuoi1);
-echo "Mảng các phần tử sau khi tách chuỗi: <br>";
-print_r($phan_tu);
-echo "<br>";
-
-//14 nối các phần tử của một mảng thành một chuỗi sử dụng hàm implode().
-$phan_tu2 = array("Chúc", "bạn", "ngủ", "ngon");
-$chuoi2 = implode(",", $phan_tu2);
-echo "Chuỗi sau khi nối các phần tử: " . $chuoi2;
-echo "<br>";
-
-//15 Viết một chương trình PHP để thêm một chuỗi vào đầu hoặc cuối của một chuỗi sử dụng hàm str_pad().
-$input = "lovepeanut";
-# Thêm chuỗi "-=" vào đầu, chiều dài tổng cộng là 20 ký tự
-echo str_pad($input, 20, "-=", STR_PAD_LEFT) . "<br>"; 
-
-# Thêm ký tự "_" vào cả hai đầu, chiều dài tổng cộng là 20 ký tự
-echo str_pad($input, 20, "_", STR_PAD_BOTH) . "<br>";   
-
-
-# Thêm chuỗi "___" vào cuối, chiều dài tổng cộng là 13 ký tự .Chuỗi gốc đã dài hơn 13 ký tự, nên kết quả không thay đổi
-echo str_pad($input, 13, "___") . "<br>";
-
-
-# Thêm ký tự "*" vào cuối, chiều dài tổng cộng là 3 ký tự. Chuỗi gốc đã dài hơn 3 ký tự, nên kết quả không thay đổi
-echo str_pad($input, 3, "*") . "<br>";
-
-
-//16.Viết một chương trình PHP để kiểm tra xem một chuỗi có kết thúc bằng một chuỗi con khác không sử dụng hàm strrchr().
-$str5 = "Chao mung ban den voi";
-$subString = "hoa";
-
-if (substr($str5, -strlen($subString)) === $subString) {
-    echo "Chuỗi kết thúc bằng chuỗi con khác!";
-} else {
-    echo "Chuỗi không kết thúc bằng chuỗi con khác!";
-}
-echo "<br>";
-
-//17.Viết một chương trình PHP để kiểm tra xem một chuỗi có chứa một chuỗi con khác không sử dụng hàm strstr().
-# Chuỗi chính và chuỗi con cần kiểm tra
-$chuoiChinh = "Hôm nay trời đẹp và tôi rất vui!";
-$chuoiCon = "trời đẹp";
-
-# Sử dụng hàm strpos() để kiểm tra chuỗi con
-if (strpos($chuoiChinh, $chuoiCon) !== false) {
-    echo "Chuỗi chính chứa chuỗi con!";
-} else {
-    echo "Chuỗi chính không chứa chuỗi con.";
-}
-
-//18.Viết một chương trình PHP để thay thế tất cả các ký tự trong một chuỗi không phải là chữ cái hoặc số bằng một ký tự khác sử dụng hàm preg_replace()
-$str18 = "!@#$%^&LinhChi30@#%%";
-$result = preg_replace("/\W/", "_", $str18);
-echo $result;
-echo "<br>";
-
-//19. Viết một chương trình PHP để kiểm tra xem một chuỗi có phải là một số nguyên hay không sử dụng hàm is_int().
-
-$x=10;
-if(is_int($x)){
- echo"Biến x thuộc kiểu số nguyên";
-}
-else{
- echo"Biến x không thuộc kiểu số nguyên";
-}
-echo "<br>";
-
-// 20.Viết một chương trình PHP để kiểm tra xem một chuỗi có phải là một email hợp lệ hay không sử dụng hàm filter_var()
-$str19 = "daolinhchi2003@gmail.com";
-$str20 = "daolinhchi2003";
-
-# Hàm kiểm tra email hợp lệ
-function checkEmail($email) {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return "Email hợp lệ!";
+    if (!$dbh)     
+    die("Unable to connect to MySQL: " . mysqli_connect_error()); 
+    // Thông báo lỗi nếu kết nối thất bại 
+    
+    
+    $sql_stmt = "INSERT INTO `my_contacts` (`full_names`,`gender`,`contact_no`,`email`,`city`,`country`)"; 
+    $sql_stmt .= "VALUES('Poseidon','Mail','541',' poseidon@sea.oc ','Troy','Ithaca')"; 
+    
+    $result = mysqli_query($dbh, $sql_stmt); // Thực thi câu lệnh SQL
+    
+    if (!$result) {
+        die("Adding record failed: " . mysqli_connect_error()); 
+        // Thông báo lỗi nếu thực thi câu lệnh thất bại
     } else {
-        return "Email không hợp lệ!";
+        echo "Poseidon has been successfully added to your contacts list";
     }
+
+    mysqli_close($dbh); // Đóng kết nối CSDL 
+
+
+// cập nhật dữ liệu vào bảng
+
+$dbh = mysqli_connect('localhost:3307', 'root','', 'melody')
+// Kết nối tới MySQL Server
+
+if (!$dbh)    
+die("Unable to connect to MySQL: " . mysqli_connect_error()); 
+// Thông báo lỗi nếu kết nối thất bại 
+
+$sql_stmt = "UPDATE `my_contacts` SET `contact_no` = '785',`email` = 'poseidon@ocean.oc'";
+$sql_stmt .= "WHERE `id` = 5";
+
+$result = mysqli_query($dbh,$sql_stmt);
+// Thực thi câu lệnh SQL
+
+if (!$result) {
+    die("Deleting record failed: " . mysqli_connect_error());
+    // Thông báo lỗi nếu thực thi thất bại
+} else {
+    echo "ID number 5 has been successfully updated";
 }
 
-# Kiểm tra cả hai chuỗi
-echo "Câu 20: ";
-echo "Chuỗi 1: " . checkEmail($str19) . "<br>";
-echo "Chuỗi 2: " . checkEmail($str20);
+mysqli_close($dbh); //close the database connection
+
+
+
+// xóa dữ liệu
+$dbh = mysqli_connect('localhost:3307', 'root','', 'melody')
+    // Kết nối với MySQL Server
+    
+    if (!$dbh)     
+    die("Unable to connect to MySQL: " . mysqli_connect_error()); 
+    // Thông báo lỗi nếu kết nối thất bại
+    
+    $id = 4; 
+    // ID của Venus trong CSQL
+    
+    $sql_stmt = "DELETE FROM `my_contacts` WHERE `id` = $id"; 
+    // Câu lệnh SQL Delete
+    
+    $result = mysqli_query($dbh,$sql_stmt); 
+    // Thực thi câu lệnh SQL
+    
+    if (!$result) {
+        die("Deleting record failed: " . mysqli_connect_error());
+        // Thông báo lỗi nếu thực thi thất bại 
+    } else {
+        echo "ID number $id has been successfully deleted";
+    }
+    
+    mysqli_close($dbh); // Đóng kết nối CSDL
+
+
+
+// hiển thị dữ liệu
+$dbh = mysqli_connect('localhost:3307', 'root','', 'melody')
+    // Kết nối tới MySQL server
+
+    if (!$dbh){die("Unable to connect to MySQL: " . mysqli_connect_error());
+        // Nếu kết nối thất bại thì đưa ra thông báo lỗi
+        }     
+    
+    $sql_stmt = "SELECT * FROM my_contacts"; 
+    // Câu lệnh select
+    
+    $result = mysqli_query($dbh,$sql_stmt);
+    // Thực thi câu lệnh SQL
+     
+    if (!$result)     
+        die("Database access failed: " . mysqli_connect_error()); 
+        // Thông báo lỗi nếu thực thi thất bại
+        
+        $rows = mysqli_num_rows($result); 
+        // Lấy số hàng trả về
+    
+    if ($rows) {
+        while ($row = mysqli_fetch_array($result)) {         
+            echo 'ID: ' . $row['id'] . '<br>';         
+            echo 'Full Names: ' . $row['full_names'] . '<br>';        
+            echo 'Gender: ' . $row['gender'] . '<br>';         
+            echo 'Contact No: ' . $row['contact_no'] . '<br>';         
+            echo 'Email: ' . $row['email'] . '<br>';         
+            echo 'City: ' . $row['city'] . '<br>';         
+            echo 'Country: ' . $row['country'] . '<br><br>';     
+        } 
+    } 
+mysqli_close($dbh); // Đóng kết nối CSDL
+
+
+
+
+
+// bài tập trang 14
+// kết nối với csdl
+try {
+    $dbh = new PDO('mysql:host=localhost:3307;dbname=melody', 'root', '');
+    // Thiết lập chế độ báo cáo lỗi PDO
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// thêm dữ liệu vào bảng
+$sql = "INSERT INTO my_contacts (full_names, gender, contact_no, email, city, country) 
+        VALUES (:full_names, :gender, :contact_no, :email, :city, :country)";
+        
+$stmt = $dbh->prepare($sql);
+
+// Dữ liệu cần thêm
+$data = [
+    ':full_names' => 'Poseidon',
+    ':gender' => 'Male',
+    ':contact_no' => '541',
+    ':email' => 'poseidon@sea.oc',
+    ':city' => 'Troy',
+    ':country' => 'Ithaca'
+];
+
+// Thực thi câu lệnh
+if ($stmt->execute($data)) {
+    echo "Record added successfully.";
+} else {
+    echo "Error adding record.";
+}
+
+//cập nhật dữ liệu trong bảng
+$sql = "UPDATE my_contacts 
+        SET full_names = :full_names, email = :email 
+        WHERE id = :id";
+        
+$stmt = $dbh->prepare($sql);
+
+// Dữ liệu cần cập nhật
+$data = [
+    ':full_names' => 'Zeus',
+    ':email' => 'zeus@olympus.com',
+    ':id' => 1
+];
+
+// Thực thi câu lệnh
+if ($stmt->execute($data)) {
+    echo "Record updated successfully.";
+} else {
+    echo "Error updating record.";
+}
+
+
+// xóa dữ liệu
+$sql = "DELETE FROM my_contacts WHERE id = :id";
+
+$stmt = $dbh->prepare($sql);
+
+// ID của bản ghi cần xóa
+$data = [':id' => 1];
+
+// Thực thi câu lệnh
+if ($stmt->execute($data)) {
+    echo "Record deleted successfully.";
+} else {
+    echo "Error deleting record.";
+}
+
+// hiển thị dữ liệu
+$sql = "SELECT * FROM my_contacts";
+$stmt = $dbh->query($sql);
+
+if ($stmt->rowCount() > 0) {
+    // Lặp qua kết quả và hiển thị
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo 'ID: ' . $row['id'] . '<br>';
+        echo 'Full Names: ' . $row['full_names'] . '<br>';
+        echo 'Gender: ' . $row['gender'] . '<br>';
+        echo 'Contact No: ' . $row['contact_no'] . '<br>';
+        echo 'Email: ' . $row['email'] . '<br>';
+        echo 'City: ' . $row['city'] . '<br>';
+        echo 'Country: ' . $row['country'] . '<br><br>';
+    }
+} else {
+    echo "No records found.";
+}
 
 ?>
- 
 </body>
 </html>
+
