@@ -1,5 +1,5 @@
-create database courseee
-use courseee
+create database db_dao_linh_chi
+use db_dao_linh_chi
 
 CREATE TABLE courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
